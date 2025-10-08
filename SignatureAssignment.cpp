@@ -2,6 +2,7 @@ using namespace std;
 #include <iostream>
 #include <fstream>
 #include <random>
+#include <ctime>
 
 const int ARRAY_SIZE = 1000;
 
@@ -36,6 +37,8 @@ int* readBinary(int& length) {
             cerr << "Error: could not open file for reading.\n";
             return nullptr;
         }
+        readFile.read(reinterpret_cast<char*>(&length), sizeof(length));
+
         int* arr = new int[length];
 
         readFile.read(reinterpret_cast<char*>(arr), sizeof(int) * length);
@@ -46,6 +49,9 @@ int* readBinary(int& length) {
 
 int main()
 {
+    //Seed random number generator
+    srand(time(nullptr));
+   
     //Declarations
     int length = 0;
     int newLength = 10;
