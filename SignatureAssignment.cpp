@@ -97,8 +97,18 @@ int* createArray(int* length) {
 
 }
 
-void createBinaryFile() {
+// Create array and write to binary file
+void createBinaryFile() 
+{
+int* array = new int[SIZE];
 
+for (int i = 0; i < SIZE; i++)
+{
+	array[i] = rand() % SIZE;
+}
+writeBinary("binary.dat", array, SIZE);
+
+delete[] array;
 }
 
 void writeBinary(int* values, int length) {
