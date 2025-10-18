@@ -3,7 +3,7 @@ using namespace std;
 #include <fstream>
 #include <random>
 #include <string>
-
+#include <algorithm>
 
 const int ARRAY_SIZE = 1000;
 
@@ -115,41 +115,15 @@ public:
 };
 
 //--------------------------------CLINT PLEASE FIGURE OUT THE LOGIC TO FIND THE UNIQUE DUPLICATES. THANKS!!!!!!--------------------------------
-class DuplicatesAnalyzer : public Analyzer 
-{
-public:
+class DuplicatesAnalyzer :public Analyzer {
+    public:
     DuplicatesAnalyzer(int* a, int s) : Analyzer(a, s) {}
-
-    string analyze() override 
-    {
-        if (size == 0) return "The total count of duplicates: 0";
-
-        // Group the identical values
-        std::sort(arr, arr + size);
-
+    
+    string analyze() override {
         int NumberOfDuplicates = 0;
-
-        // Count each value in the array that appears more than once
-        for (int index = 1; index < size; )
-        {
-            if (arr[index] == arr[index - 1])
-            {
-                ++NumberOfDuplicates;
-
-                // Skip the remaining duplicate group to count only once
-                int val = arr[index];
-                while (index < size && arr[index] == val) 
-                {
-                    ++index;
-                }
-            }
-            else
-            {
-                ++index;
-            }
-        }
-
-        return "Total count of duplicates: " + std::to_string(NumberOfDuplicates);
+        
+        
+        return "Total Duplicates: " + to_string(NumberOfDuplicates);
     }
 };
 
